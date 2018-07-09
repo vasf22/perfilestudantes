@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+	<style>
+
+    .node rect {
+      cursor: move;
+      fill-opacity: .9;
+      shape-rendering: crispEdges;
+    }
+    
+    .node text {
+      pointer-events: none;
+      text-shadow: 0 1px 0 #fff;
+    }
+    
+    .link {
+      fill: none;
+      stroke: #000;
+      stroke-opacity: .2;
+    }
+    
+    .link:hover {
+      stroke-opacity: .5;
+    }
+    
+  </style>
+	
+	<link rel="stylesheet" href="../assets/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="../assets/css/style.css"> <!-- Resource style -->
+	<script src="../assets/js/modernizr.js"></script> <!-- Modernizr -->
+
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+		
+
+
+	<title>SANKEY Experiment</title>
+</head>
+<body>
+	<header class="cd-main-header">
+	</header> <!-- .cd-main-header -->
+
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+
+			<ul>
+				<li class="cd-label">Análises</li>
+				<li class="comments">
+					<a href="../../index.html">SOBRE</a>
+				</li>
+				<li class="bookmarks">
+					<a href="../parallel/">NOTAS DOS CANDIDADOS (CURSO X REGIÃO)</a>
+				</li>
+				<li class="bookmarks">
+					<a href="#">ESCOLHA DE CURSOS PELOS CANDIDATO (CURSOS X REGIÃO)</a>
+				</li>
+				<li class="bookmarks">
+					<a href="/vis6/">MIGRAÇÃO DE CANDIDATOS (ORIGEM X DESTINO)</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="content-wrapper">
+
+      <h1>MIGRAÇÃO DE CANDIDATOS (ORIGEM X DESTINO)</h1>
+	
+			<p id="chart">
+
+		</div> <!-- .content-wrapper -->
+	</main> <!-- .cd-main-content -->
+
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="sankey.js"></script>
+<script src="graph.js"></script>
+
+<script src="../assets/js/jquery-2.1.4.js"></script>
+<script src="../assets/js/jquery.menu-aim.js"></script>
+<script src="../assets/js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

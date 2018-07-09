@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="style.css">
+	
+	<link rel="stylesheet" href="../assets/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="../assets/css/style.css"> <!-- Resource style -->
+	<script src="../assets/js/modernizr.js"></script> <!-- Modernizr -->
+
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+		
+	<script src="filtro.js"></script>
+	<script src="main.js"></script>
+	<script src="grafico.js"></script>
+
+	
+  	
+	<title>Parallel</title>
+</head>
+<body>
+	<header class="cd-main-header">
+	</header> <!-- .cd-main-header -->
+
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+
+			<ul>
+				<li class="cd-label">Análises</li>
+				<li class="comments">
+					<a href="../../index.html">SOBRE</a>
+				</li>
+				<li class="bookmarks">
+					<a href="#">NOTAS DOS CANDIDADOS (CURSO X REGIÃO)</a>
+				</li>
+				<li class="bookmarks">
+					<a href="/sankey/">ESCOLHA DE CURSOS PELOS CANDIDATO (CURSOS X REGIÃO)</a>
+				</li>
+				<li class="bookmarks">
+					<a href="/vis6/">MIGRAÇÃO DE CANDIDATOS (ORIGEM X DESTINO)</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="content-wrapper">
+			<h1>NOTAS DOS CANDIDADOS (CURSO X REGIÃO)</h1>
+			<nav class="nav-combos">
+				<label for="cbcurso" class="labelCombos">Curso<span class="fb-required">*</span></label>
+				<select class="combos-filtro" name="cbcurso" id="cbcurso" required="required" aria-required="true">
+					<option disabled selected value> -- Selecione um curso -- </option>
+				</select>
+	
+				<label for="cbregiao" class="labelCombos">Regiao<span class="fb-required">*</span></label>
+				<select class="combos-filtro" name="cbregiao" id="cbregiao" required="required" aria-required="true">
+					<option disabled selected value> -- Selecione uma Regiao -- </option>
+				</select>
+				<!--
+				<label for="cbregiao" class="labelCombos">Regiao<span class="fb-required">*</span></label>
+				<select class="combos-filtro" name="cbregiao" id="cbregiao" required="required" aria-required="true">
+					<option disabled selected value>  Selecione uma Região  </option>
+					<option value="Agreste" id="cbregiao-1">Agreste</option>
+					<option value="Capital" id="cbregiao-2">Capital</option>
+					<option value="Regiao Metropolitana" id="cbregiao-3">Região Metropolitana</option>
+					<option value="Sertao" id="cbregiao-4">Sertão</option>
+					<option value="Zona da Mata" id="cbregiao-5">Zona da Mata</option>
+				</select>-->
+				
+				<button onclick="btFilterClick()">Visualizar</button>
+			</nav>
+	
+			<section>
+				<article>
+					<svg></svg>
+				</article>
+			</section>
+	
+			<div id="simpletooltip"></div>
+
+		</div> <!-- .content-wrapper -->
+	</main> <!-- .cd-main-content -->
+
+<script type="text/javascript">	  
+			
+	function btFilterClick(){
+			
+		if (
+			document.getElementById("cbcurso").selectedIndex != 0 &&
+			document.getElementById("cbregiao").selectedIndex != 0
+		){
+			var filter_options = {
+				curso: document.getElementById("cbcurso").value,
+				regiao: document.getElementById("cbregiao").value};
+				console.log(filter_options);
+			drawGraph(filter_options);
+			document.getElementById("legend-div").style.display = "flex";					
+		} else {
+			alert("Preencha todos os campos do filtro.");
+		}
+	}
+</script>
+<script src="../assets/js/jquery-2.1.4.js"></script>
+<script src="../assets/js/jquery.menu-aim.js"></script>
+<script src="../assets/js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

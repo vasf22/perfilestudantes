@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+
+	<style>
+
+        #visual {
+          font: 12px sans-serif;
+        }
+        
+        .chord path {
+          fill-opacity: .67;
+          stroke: #000;
+          stroke-width: .5px;
+        }
+
+    </style>
+	
+	<link rel="stylesheet" href="../assets/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="../assets/css/style.css"> <!-- Resource style -->
+	<script src="../assets/js/modernizr.js"></script> <!-- Modernizr -->
+
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+		
+
+
+	<title>SANKEY Experiment</title>
+</head>
+<body>
+	<header class="cd-main-header">
+	</header> <!-- .cd-main-header -->
+
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+
+			<ul>
+				<li class="cd-label">Análises</li>
+                <li class="comments">
+                    <a href="../../index.html">SOBRE</a>
+                </li>
+				<li class="bookmarks">
+					<a href="/parallel/">NOTAS DOS CANDIDADOS (CURSO X REGIÃO)</a>
+				</li>
+				<li class="bookmarks">
+					<a href="/sankey/">ESCOLHA DE CURSOS PELOS CANDIDATO (CURSOS X REGIÃO)</a>
+				</li>
+				<li class="bookmarks">
+					<a href="#">MIGRAÇÃO DE CANDIDATOS (ORIGEM X DESTINO)</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="content-wrapper">
+
+            <h1>ESCOLHA DE CURSOS PELOS CANDIDATO (CURSOS X REGIÃO)</h1>
+	
+			<script src="http://d3js.org/d3.v3.min.js"></script>
+            <script>
+            var visual = document.getElementById("visual");
+
+            // persons moving between Marin, Sonoma, Napa, SF, EB, SV and other regions
+            var matrix = [ 
+            [ 486, 125, 88, 113, 78 ],
+            [ 237, 1815, 1678, 166, 446 ],
+            [ 39, 138, 140, 20, 39 ],
+            [ 155, 98, 110, 749, 59 ],
+            [ 134, 76, 138, 3, 242 ]
+            ];
+
+            var array = [ "Agreste", "Capital", "Região Metropolitana", "Sertão", "Zona da Mata" ];
+
+            var rotation = -0.7;
+
+            var chord_options = {
+                "gnames": array,
+                "rotation": rotation,
+                "colors": ["#034e7b","#feb24c","#b10026","#238443","#b5db1e"]
+            };
+
+                function Chord(container, options, matrix) {
+
+                    // initialize the chord configuration variables
+                    var config = {
+                        width: 740,
+                        height: 400,
+                        rotation: 0,
+                        textgap: 20,
+                        colors: ["#7fc97f", "#beaed4", "#fdc086", "#ffff99", "#386cb0", "#666666"]
+                    };
+                    
+                    // add options to the chord configuration object
+                    if (options) {
+                        extend(config, options);
+                    }
+                    
+                    // set chord visualization variables from the configuration object
+                    var offset = Math.PI * config.rotation,
+                        width = config.width,
+                        height = config.height,
+                        textgap = config.textgap
+                        colors = config.colors;
+                    
+                    // set viewBox and aspect ratio to enable a resize of the visual dimensions 
+                    var viewBoxDimensions = "0 0 " + width + " " + height,
+                        aspect = width / height;
+                    
+                    if (config.gnames) {
+                        gnames = config.gnames;
+                    } else {
+                        // make a list of names
+                        gnames = [];
+                        for (var i=97; i<matrix.length; i++) {
+                            gnames.push(String.fromCharCode(i));
+                        }
+                    }
+
+                    // start the d3 magic
+                    var chord = d3.layout.chord()
+                        .padding(.05)
+                        .sortSubgroups(d3.descending)
+                        .matrix(matrix);
+
+                    var innerRadius = Math.min(width, height) * .31,
+                        outerRadius = innerRadius * 1.1;
+
+                    var fill = d3.scale.ordinal()
+                        .domain(d3.range(matrix.length-1))
+                        .range(colors);
+                
+                    var svg = d3.select("body").append("svg")
+                        .attr("id", "visual")
+                        .attr("viewBox", viewBoxDimensions)
+                        .attr("preserveAspectRatio", "xMinYMid")    // add viewBox and preserveAspectRatio
+                        .attr("width", width)
+                        .attr("height", height)
+                    .append("g")
+                        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+                    var g = svg.selectAll("g.group")
+                        .data(chord.groups)
+                    .enter().append("svg:g")
+                        .attr("class", "group");
+
+                    g.append("svg:path")
+                        .style("fill", function(d) { return fill(d.index); })
+                        .style("stroke", function(d) { return fill(d.index); })
+                        .attr("id", function(d, i) { return "group" + d.index; })
+                        .attr("d", d3.svg.arc().innerRadius(innerRadius).outerRadius(outerRadius).startAngle(startAngle).endAngle(endAngle))
+                        .on("mouseover", fade(.1))
+                        .on("mouseout", fade(1));
+
+                    g.append("svg:text")
+                        .each(function(d) {d.angle = ((d.startAngle + d.endAngle) / 2) + offset; })
+                        .attr("dy", ".35em")
+                        .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+                        .attr("transform", function(d) {
+                            return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+                                + "translate(" + (outerRadius + textgap) + ")"
+                                + (d.angle > Math.PI ? "rotate(180)" : "");
+                        })
+                        .text(function(d) { return gnames[d.index]; });
+
+                    svg.append("g")
+                        .attr("class", "chord")
+                    .selectAll("path")
+                        .data(chord.chords)
+                    .enter().append("path")
+                        .attr("d", d3.svg.chord().radius(innerRadius).startAngle(startAngle).endAngle(endAngle))
+                        .style("fill", function(d) { return fill(d.source.index); })
+                        .style("opacity", 1)
+                    .append("svg:title")
+                        .text(function(d) { 
+                            return  d.source.value + " people from " + gnames[d.source.index] + " commute to " + gnames[d.target.index]; 
+                        });
+                
+                    // helper functions start here
+                    
+                    function startAngle(d) {
+                        return d.startAngle + offset;
+                    }
+
+                    function endAngle(d) {
+                        return d.endAngle + offset;
+                    }
+                    
+                    function extend(a, b) {
+                        for( var i in b ) {
+                            a[ i ] = b[ i ];
+                        }
+                    }
+
+                    // Returns an event handler for fading a given chord group.
+                    function fade(opacity) {
+                        return function(g, i) {
+                            svg.selectAll(".chord path")
+                                .filter(function(d) { return d.source.index != i && d.target.index != i; })
+                                .transition()
+                                .style("opacity", opacity);
+                        };
+                    }
+                    
+                    
+                    window.onresize = function() {
+                        var targetWidth = (window.innerWidth < width)? window.innerWidth : width;
+                        
+                        var svg = d3.select("#visual")
+                            .attr("width", targetWidth)
+                            .attr("height", targetWidth / aspect);
+                    }
+
+                    
+                }
+
+            window.onload = function() {
+                Chord(visual, chord_options, matrix);
+            }
+
+            d3.select(self.frameElement).style("height", "600px");
+
+            </script>
+
+		</div> <!-- .content-wrapper -->
+	</main> <!-- .cd-main-content -->
+
+<script src="../assets/js/jquery-2.1.4.js"></script>
+<script src="../assets/js/jquery.menu-aim.js"></script>
+<script src="../assets/js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

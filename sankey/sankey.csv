@@ -1,0 +1,146 @@
+source,target,value
+Administração,Agreste,90
+Administração,Capital,354
+Administração,Região Metropolitana,234
+Administração,Sertão,44
+Administração,Zona da Mata,45
+Ciências Biológicas,Agreste,85
+Ciências Biológicas,Capital,102
+Ciências Biológicas,Região Metropolitana,163
+Ciências Biológicas,Sertão,50
+Ciências Biológicas,Zona da Mata,95
+Computação,Agreste,20
+Computação,Capital,1
+Computação,Região Metropolitana,9
+Computação,Sertão,3
+Computação,Zona da Mata,1
+Direito,Agreste,82
+Direito,Capital,298
+Direito,Região Metropolitana,211
+Direito,Sertão,84
+Direito,Zona da Mata,55
+Educação Física,Agreste,19
+Educação Física,Capital,94
+Educação Física,Região Metropolitana,189
+Educação Física,Sertão,13
+Educação Física,Zona da Mata,47
+Enfermagem,Agreste,45
+Enfermagem,Capital,106
+Enfermagem,Região Metropolitana,220
+Enfermagem,Sertão,119
+Enfermagem,Zona da Mata,102
+Engenharia Civil,Agreste,55
+Engenharia Civil,Capital,142
+Engenharia Civil,Região Metropolitana,119
+Engenharia Civil,Sertão,44
+Engenharia Civil,Zona da Mata,48
+Engenharia da Computação,Agreste,25
+Engenharia da Computação,Capital,151
+Engenharia da Computação,Região Metropolitana,117
+Engenharia da Computação,Sertão,15
+Engenharia da Computação,Zona da Mata,30
+Engenharia de Controle e Automação,Agreste,10
+Engenharia de Controle e Automação,Capital,44
+Engenharia de Controle e Automação,Região Metropolitana,28
+Engenharia de Controle e Automação,Sertão,4
+Engenharia de Controle e Automação,Zona da Mata,7
+Engenharia Elétrica Eletrônica,Agreste,4
+Engenharia Elétrica Eletrônica,Capital,38
+Engenharia Elétrica Eletrônica,Região Metropolitana,36
+Engenharia Elétrica Eletrônica,Sertão,5
+Engenharia Elétrica Eletrônica,Zona da Mata,7
+Engenharia Elétrica Eletrotécnica,Agreste,3
+Engenharia Elétrica Eletrotécnica,Capital,30
+Engenharia Elétrica Eletrotécnica,Região Metropolitana,25
+Engenharia Elétrica Eletrotécnica,Sertão,7
+Engenharia Elétrica Eletrotécnica,Zona da Mata,11
+Engenharia Elétrica Telecomunicações,Agreste,6
+Engenharia Elétrica Telecomunicações,Capital,28
+Engenharia Elétrica Telecomunicações,Região Metropolitana,50
+Engenharia Elétrica Telecomunicações,Sertão,2
+Engenharia Elétrica Telecomunicações,Zona da Mata,21
+Engenharia Mecânica Industrial,Agreste,12
+Engenharia Mecânica Industrial,Capital,58
+Engenharia Mecânica Industrial,Região Metropolitana,47
+Engenharia Mecânica Industrial,Sertão,13
+Engenharia Mecânica Industrial,Zona da Mata,19
+Engenharia Mecânica Industrial,Agreste,17
+Engenharia Mecânica Industrial,Capital,14
+Engenharia Mecânica Industrial,Região Metropolitana,21
+Engenharia Mecânica Industrial,Sertão,99
+Engenharia Mecânica Industrial,Zona da Mata,4
+Geografia,Agreste,33
+Geografia,Capital,4
+Geografia,Região Metropolitana,12
+Geografia,Sertão,9
+Geografia,Zona da Mata,21
+Gestão em Logística,Agreste,7
+Gestão em Logística,Capital,3
+Gestão em Logística,Região Metropolitana,6
+Gestão em Logística,Sertão,0
+Gestão em Logística,Zona da Mata,18
+História,Agreste,35
+História,Capital,25
+História,Região Metropolitana,37
+História,Sertão,39
+História,Zona da Mata,33
+Letras - Português,Agreste,28
+Letras - Português,Capital,0
+Letras - Português,Região Metropolitana,7
+Letras - Português,Sertão,2
+Letras - Português,Zona da Mata,2
+Letras - Português/Espanhol,Agreste,11
+Letras - Português/Espanhol,Capital,5
+Letras - Português/Espanhol,Região Metropolitana,18
+Letras - Português/Espanhol,Sertão,10
+Letras - Português/Espanhol,Zona da Mata,12
+Letras - Português/Inglês,Agreste,8
+Letras - Português/Inglês,Capital,22
+Letras - Português/Inglês,Região Metropolitana,15
+Letras - Português/Inglês,Sertão,15
+Letras - Português/Inglês,Zona da Mata,15
+Matemática,Agreste,74
+Matemática,Capital,13
+Matemática,Região Metropolitana,27
+Matemática,Sertão,22
+Matemática,Zona da Mata,49
+Medicina,Agreste,166
+Medicina,Capital,433
+Medicina,Região Metropolitana,243
+Medicina,Sertão,209
+Medicina,Zona da Mata,69
+Nutrição,Agreste,10
+Nutrição,Capital,15
+Nutrição,Região Metropolitana,21
+Nutrição,Sertão,98
+Nutrição,Zona da Mata,12
+Odontologia,Agreste,72
+Odontologia,Capital,146
+Odontologia,Região Metropolitana,145
+Odontologia,Sertão,101
+Odontologia,Zona da Mata,45
+Pedagogia,Agreste,57
+Pedagogia,Capital,7
+Pedagogia,Região Metropolitana,9
+Pedagogia,Sertão,18
+Pedagogia,Zona da Mata,32
+Psicologia,Agreste,44
+Psicologia,Capital,40
+Psicologia,Região Metropolitana,38
+Psicologia,Sertão,22
+Psicologia,Zona da Mata,13
+Saúde Coletiva,Agreste,3
+Saúde Coletiva,Capital,16
+Saúde Coletiva,Região Metropolitana,37
+Saúde Coletiva,Sertão,0
+Saúde Coletiva,Zona da Mata,14
+Serviço Social,Agreste,1
+Serviço Social,Capital,7
+Serviço Social,Região Metropolitana,11
+Serviço Social,Sertão,0
+Serviço Social,Zona da Mata,19
+Sistemas de Informação,Agreste,29
+Sistemas de Informação,Capital,6
+Sistemas de Informação,Região Metropolitana,3
+Sistemas de Informação,Sertão,3
+Sistemas de Informação,Zona da Mata,10
